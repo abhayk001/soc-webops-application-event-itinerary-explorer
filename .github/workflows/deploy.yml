@@ -43,6 +43,7 @@ jobs:
     permissions:
       id-token: write
       pages: write
+      contents: read
     steps:
       - name: Verify files before Pages Deployment
         uses: actions/download-artifact@v8
