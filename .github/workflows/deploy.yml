@@ -44,7 +44,13 @@ jobs:
       id-token: write
       pages: write
     steps:
+      - name: Verify files before Pages Deployment
+        uses: actions/download-artifact@v8
+        with:
+          name: github-pages
+      - name: Display structure of downloaded files
+        run: ls -R
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
 
