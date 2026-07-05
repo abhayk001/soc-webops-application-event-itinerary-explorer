@@ -32,7 +32,6 @@ jobs:
         uses: actions/upload-pages-artifact@v5
         with:
           path: dist/
-          include-hidden-files: true
   
   # Deployment job
   deploy:
@@ -47,5 +46,5 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v5
+        uses: actions/deploy-pages@v4
 
