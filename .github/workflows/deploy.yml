@@ -27,34 +27,9 @@ jobs:
       - name: Run the build
         run: npm run build
       
-      - name: Upload static files as an artifact
-        id: deployment
-        uses: actions/upload-pages-artifact@v5
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v4
         with:
-          path: dist/
-  
-  # Deployment job
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    needs: build
-    permissions:
-      id-token: write
-      pages: write
-      contents: read
-    steps:
-      - name: Verify files before Pages Deployment
-        uses: actions/download-artifact@v8
-        with:
-          name: github-pages
-      - name: Display structure of downloaded files
-        run: ls -R
-      
-      - name: Check the artifact contents
-        run: tar tf ./artifact.tar
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v5
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
 
