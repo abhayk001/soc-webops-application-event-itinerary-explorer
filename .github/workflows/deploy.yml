@@ -29,6 +29,10 @@ jobs:
       - name: Run the build
         run: npm run build
       
+      - name: List files in the dist folder
+        run: |
+          ls -R ./dist
+      
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v4
         with:
