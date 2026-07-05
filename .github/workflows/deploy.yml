@@ -50,6 +50,9 @@ jobs:
           name: github-pages
       - name: Display structure of downloaded files
         run: ls -R
+      
+      - name: Check the artifact contents
+        run: tar tf ./artifact.tar
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v5
